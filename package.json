@@ -1,0 +1,26 @@
+{
+  "name": "boris-hamblok",
+  "version": "1.0.0",
+  "description": "Boris Hamblok",
+  "main": "index.html",
+  "scripts": {
+    "start": "simplehttpserver & livereload '.' -p 35730 -ee 'json'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/bhamblok/boris.git"
+  },
+  "keywords": [],
+  "author": "@bhamblok",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "livereload": "^0.8.2",
+    "simplehttpserver": "^0.3.0",
+    "stylelint": "^12.0.0",
+    "stylelint-config-standard": "^19.0.0"
+  }
+}
