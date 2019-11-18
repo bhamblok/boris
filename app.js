@@ -9,7 +9,7 @@ const iOS = (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream);
 console.log('STANDALONE:', standalone); // eslint-disable-line no-console
 
 const installed = () => document.body.classList.add('installed');
-const hasAccess = () => document.body.classList.add('access');
+// const hasAccess = () => document.body.classList.add('access');
 
 const cache = {};
 
@@ -67,10 +67,10 @@ const updateDate = () => {
     document.querySelector('.minutes').innerHTML = `<span class="digit">${minutes}</span> <span>${minutes === 1 ? 'minuut' : 'minuten'}</span>`;
     cache.minutes = minutes;
   }
-  if (cache.seconds !== seconds) {
-    document.querySelector('.seconds').innerHTML = `<span class="digit">${seconds}</span> <span>${seconds === 1 ? 'seconde' : 'seconden'}</span>`;
-    cache.seconds = seconds;
-  }
+  // if (cache.seconds !== seconds) {
+  //   document.querySelector('.seconds').innerHTML = `<span class="digit">${seconds}</span> <span>${seconds === 1 ? 'seconde' : 'seconden'}</span>`;
+  //   cache.seconds = seconds;
+  // }
 };
 
 const installable = new Promise((resolve) => {
@@ -82,11 +82,6 @@ const installable = new Promise((resolve) => {
   resolve();
 });
 
-// Registering Service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
-}
-
 window.addEventListener('appinstalled', () => {
   standalone = true;
   installed();
@@ -95,14 +90,18 @@ window.addEventListener('appinstalled', () => {
 });
 
 window.addEventListener('load', async () => {
+  // Registering Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
   if (window.location.hostname === 'localhost') {
     const livereload = document.createElement('script');
     livereload.src = 'http://localhost:35730/livereload.js?snipver=1';
     document.body.appendChild(livereload);
   }
-  if (standalone || window.location.search === '?q=fvnKDRlHIIw9F6dQ2RCA') {
-    hasAccess();
-  }
+  // if (standalone || window.location.search === '?q=fvnKDRlHIIw9F6dQ2RCA') {
+  //   hasAccess();
+  // }
   if (standalone) {
     installed();
   } else if (iOS) {
@@ -114,7 +113,7 @@ window.addEventListener('load', async () => {
       btnAddToHome.addEventListener('click', async () => {
         localStorage.setItem('standalone', true);
         installed();
-        hasAccess();
+        // hasAccess();
         if (deferredPrompt) {
           deferredPrompt.prompt();
           const choiceResult = await deferredPrompt.userChoice;
@@ -123,7 +122,7 @@ window.addEventListener('load', async () => {
       });
     });
   }
-  manifest = JSON.parse(await fetch(document.head.querySelector('[rel="manifest"]').href).then(res => res.text()));
+  manifest = JSON.parse(await fetch(document.head.querySelector('[rel="manifest"]').href).then((res) => res.text()));
   birthDate = new Date(manifest.birthDate);
   setInterval(updateDate, 1000);
   updateDate();

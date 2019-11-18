@@ -1,5 +1,4 @@
-
-const cacheName = '1.0.0';
+const cacheName = '1.0.1';
 
 // Installing Service Worker
 self.addEventListener('install', (e) => {
@@ -32,15 +31,15 @@ self.addEventListener('install', (e) => {
     '/icons/icon-512.png',
   ];
   e.waitUntil(caches.open(cacheName)
-    .then(cache => cache.addAll(contentToCache)));
+    .then((cache) => cache.addAll(contentToCache)));
 });
 
 // Fetching content using Service Worker
 self.addEventListener('fetch', (e) => {
   e.respondWith(caches.match(e.request).then((r) => {
-    console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
-    return r || fetch(e.request).then(response => caches.open(cacheName).then((cache) => {
-      console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
+    console.log(`[Service Worker] Fetching resource: ${e.request.url}`); // eslint-disable-line no-console
+    return r || fetch(e.request).then((response) => caches.open(cacheName).then((cache) => {
+      console.log(`[Service Worker] Caching new resource: ${e.request.url}`); // eslint-disable-line no-console
       cache.put(e.request, response.clone());
       return response;
     }));
