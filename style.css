@@ -44,10 +44,12 @@ body {
   width: 100vw;
   height: 100vh;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 80px;
-  grid-template-areas:
+  /* grid-template-rows: 1fr 80px; */
+  grid-template-rows: 1fr;
+  /* grid-template-areas:
     "main main main"
-    "left center right";
+    "left center right"; */
+  grid-template-areas: "main main main";
 }
 .content {
   grid-area: main;
