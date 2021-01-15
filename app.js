@@ -52,7 +52,7 @@ const updateDate = () => {
     cache.years = years;
   }
   if (cache.months !== months) {
-    document.querySelector('.months').innerHTML = months ? `<span class="digit">${months}</span> <span>${months === 1 ? 'maand' : 'maanden'}</span>` : '<span class="digit">&nbsp;</span> <span> </span>';
+    document.querySelector('.months').innerHTML = (years || months) ? `<span class="digit">${months}</span> <span>${months === 1 ? 'maand' : 'maanden'}</span>` : '<span class="digit">&nbsp;</span> <span> </span>';
     cache.months = months;
   }
   if (cache.days !== days) {
