@@ -20,7 +20,7 @@
     "eslint-plugin-import": "^2.22.1",
     "livereload": "^0.9.1",
     "simplehttpserver": "^0.3.0",
-    "stylelint": "^13.8.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-standard": "^20.0.0"
   }
 }
