@@ -32,7 +32,7 @@ const updateDate = () => {
     if (seconds < 0) seconds += 60;
     if (minutes < 0) minutes += 60;
     if (hours < 0) hours += 24;
-    if (days < 0) days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+    if (days < 0) days += new Date(now.getFullYear(), now.getMonth() - 1, 0).getDate();
     if (months < 0) months += 12;
   } else {
     seconds = birthDate.getSeconds() - now.getSeconds();
@@ -44,7 +44,7 @@ const updateDate = () => {
     if (seconds < 0) seconds += 60;
     if (minutes < 0) minutes += 60;
     if (hours < 0) hours += 24;
-    if (days < 0) days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+    if (days < 0) days += new Date(now.getFullYear(), now.getMonth() - 1, 0).getDate();
     if (months < 0) months += 12;
   }
   if (cache.years !== years) {
